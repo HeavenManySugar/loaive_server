@@ -95,7 +95,7 @@ io.on('connection',function(socket) {
     var userName = '';
     
     socket.on('subscribe', function(data) {
-        console.log('subscribe trigged')
+        //console.log('subscribe trigged')
         const room_data = JSON.parse(data)
         const token = room_data.token;
         //console.log(room_data)
@@ -108,7 +108,7 @@ io.on('connection',function(socket) {
                   const id = tokenResult;
                   memberData(id).then(result => {
                     userName = result[0].name
-                    console.log(`[userName] ${userName} : Join`)
+                    console.log(`Username : ${userName} join to queue`)
                     names[socket.id] = userName;
                     allUsers[socket.id] = socket;
                     // now check if sb is in queue
@@ -123,7 +123,7 @@ io.on('connection',function(socket) {
     })
 
     socket.on('unsubscribe',function(data) {
-      console.log('unsubscribe trigged')
+      //console.log('unsubscribe trigged')
       const room_data = JSON.parse(data)
       const userName = room_data.userName;
       const roomName = rooms[socket.id];
